@@ -1,6 +1,6 @@
 DbName: "testing_db"
 DbHost: "127.0.0.1"
-DbPort: 55555  # If this is changed, please modify DB_PORT in Makefile
+DbPort: 27017  # If this is changed, please modify DB_PORT in Makefile
 ItemsPerPage: 20   # Item count for each page
 DbUsername: "<username>"
 DbPassword: "<password>"

@@ -1,5 +1,5 @@
 # Music App
-This project has been completed in accordance with requirements mentioned in [assignment description](). 
+This project has been completed in accordance with requirements mentioned in [assignment description](https://github.com/hafeezibbad/music_app/blob/master/backend_test.txt). 
 In this project, we have developed an API for performing search operations on a database of Songs. The project is
  developed using [Python](https://www.python.org/) programming language and [mongoDB](https://www.mongodb.com/) for
   data storage. 
@@ -30,7 +30,7 @@ The project was developed using ``python3.6``. Since this project uses
 [typing](https://docs.python.org/3/library/typing.html) module, it will not work with python versions lower than
  ``python3.6``.
 If your system default ``python3`` is ``python3.5`` or lower, please 
-* either modify the ``PYTHON_RUNTIME`` variable in [Makefile]() to use a different version of file
+* either modify the ``PYTHON_RUNTIME`` variable in [Makefile](https://github.com/hafeezibbad/music_app/blob/master/Makefile) to use a different version of file
 ```text
 PTYHON_RUNTIME ?= python3.6
 ``` 
@@ -66,7 +66,7 @@ In this project, we use python [venv](https://docs.python.org/3/library/venv.htm
 $ make python-venv
 ```
 You can modify the name of default virtual environment (set up by ``make`` target) by modifying ``VIRTUAL_ENV
-`` variable in [MakeFile]() 
+`` variable in [Makefile](https://github.com/hafeezibbad/music_app/blob/master/Makefile) 
 In case you are using some other method instead of ``make`` targets for setting up virtual environment, please
  install project dependencies by running 
  
@@ -86,7 +86,7 @@ mongod
 
 ```
 Please note that we run ``mongodb`` server on the default port number ``27017``. In case this port number changes
-, please modify it accordingly in configuration file available in [configs/app/](). 
+, please modify it accordingly in configuration file available in [configs/app/](https://github.com/hafeezibbad/music_app/tree/master/configs/app). 
 You can run ``mongodb`` on custom port (``55555`` in this case) using ``make`` target as
 ```bash
 $ DB_PORT_NUMBER=55555 make mongodb-offline
@@ -107,10 +107,10 @@ $ make app-offline
  * Debugger PIN: 123-739-668
 ```
 Now your server must be up and ready for usage. 
-The server provides different endpoints which are discussed in [Endpoints](#endpoints) section.
+The server provides different endpoints which are discussed in Endpoints section.
 Please note that 
-* This target uses [dev-configuration]() by default. In case you want to run some other configuration
- for running the application, please modify ``STAGE`` variable in [Makefile](), or run this target as. 
+* This target uses [dev-configuration](https://github.com/hafeezibbad/music_app/blob/master/configs/app/dev/config.yml) by default. In case you want to run some other configuration
+ for running the application, please modify ``STAGE`` variable in [Makefile](https://github.com/hafeezibbad/music_app/blob/master/Makefile), or run this target as. 
 
 ```bash
 $ STAGE="test" make app-offline
@@ -125,7 +125,7 @@ Once the server is up and running, you can run the end to end tests against this
 ```bash
 $ make install-and-e2e-test
 ```
-By default the end-to-end tests use the deployment environment (STAGE) specified in [Makefile](), but you can run the
+By default the end-to-end tests use the deployment environment (STAGE) specified in [Makefile](https://github.com/hafeezibbad/music_app/blob/master/Makefile), but you can run the
  tests against any other environment as ``STAGE="test" make install-and-e2e-test``
 If you have modified ``ServerPort`` and/or ``EndpointBaseUrl`` settings in configuration file, or you want to run
  tests against another deployment of this app, please run e2e tests as ``ENDPOINT_BASE_URL='<base_url>' make e2e-test``
@@ -137,7 +137,7 @@ All the endpoints listed as follows are tested for sunny day scenario, and these
 ---
 **NOTE**
 We use ``/api/v1`` prefix for all API endpoints. This can be changed/removed by modifying the ``SONGS_API_PREFIX
-`` variable in [src/routes/songs_api.py]() file. 
+`` variable in [src/routes/songs_api.py](https://github.com/hafeezibbad/music_app/blob/master/src/routes/songs_api.py#L19) file. 
 ----
 ### [GET] /api/v1/songs
 This endpoint can be used to get a list of all songs in the database. 
@@ -565,7 +565,7 @@ We have made following assumptions when developing this API.
 * More end-to-end tests should be added.
 
 ## Developer notes. 
-*  In case unit tests are added, they should be added to [tests/unit]() folder and run using ``make test`` 
+*  In case unit tests are added, they should be added to [tests/unit](https://github.com/hafeezibbad/music_app/tree/master/tests/unit) folder and run using ``make test`` 
  target.
 * It is possible that end-to-end tests fail due to existing records in database, which result in ``409 Conflict
 `` when we try to add songs for given test case. In that case, please remove all existing records from **test** 
@@ -584,17 +584,16 @@ $ make analyze-code
 
 This scheme uses [pylint](https://pypi.org/project/pylint/) and [pycodestyle](https://pypi.org/project/pycodestyle/) 
 guidelines to check code styling and formatting issues. 
-The default configuration for pylint checks can be overridden by modifying [pylint-configuration file]()
+The default configuration for pylint checks can be overridden by modifying [pylint-configuration file](https://github.com/hafeezibbad/music_app/blob/master/configs/pylint/pylint.cfg)
 
-
-## Common Error codes
+### Common Error codes
 * ``400 Bad request``, if the data provided in requests is invalid. 
 * ``404 Not Found``, if not song is found with specified song ID
 * ``503 Internal Server Error``, if client request was not processed successfully.
 
 ## Bonus endpoints
 During development, some additional endpoints have been created.
-### [GET] /api/v1/songs/<song_id>
+#### [GET] /api/v1/songs/<song_id>
 Returns the data for a song with specified ``songs_id``
 ```curl
 curl --location --request GET 'http://localhost:3500/api/v1/songs/1' \
@@ -620,10 +619,9 @@ curl --location --request GET 'http://localhost:3500/api/v1/songs/1' \
     "last_modified_at": "2020-07-09T12:26:19.500000"
 }
 ```
-#### Errors
-* Returns ``412`` if the specified version in ``If-None-Match`` header is out-dated.
+**Errors**: Returns ``412`` if the specified version in ``If-None-Match`` header is out-dated.
 
-### [POST] /api/v1/songs/
+#### [POST] /api/v1/songs/
 Creates a new song record in database
 
 ```curl
@@ -645,7 +643,7 @@ curl --location --request POST 'http://localhost:3500/api/v1/songs/' \
     "last_modified_at": "2020-07-09T09:48:42.508611"
 }
 ```
-### [PATCH] /api/v1/songs/<song_id>
+#### [PATCH] /api/v1/songs/<song_id>
 Updates an existing songs record
 ```bash
 curl --location --request PATCH 'http://localhost:3500/api/v1/songs/14' \
@@ -670,14 +668,14 @@ curl --location --request PATCH 'http://localhost:3500/api/v1/songs/14' \
     "last_modified_at": "2020-07-09T09:49:51.757000"
 }
 ```
-### [DELETE] /api/v1/songs/<song_id>
+#### [DELETE] /api/v1/songs/<song_id>
 Deletes an existing song record
 ```curl
 curl --location --request DELETE 'http://localhost:3500/api/v1/songs/13'
 ```
 Returns ``204 No Content``
 
-### [POST] /api/v1/songs/<uploads>
+#### [POST] /api/v1/songs/<uploads>
 Batch upload multiple songs in the database. 
 ```bash
 curl --location --request POST 'http://localhost:3500/api/v1/songs/uploads' \
@@ -787,8 +785,8 @@ curl --location --request POST 'http://localhost:3500/api/v1/songs/uploads' \
 Response returned if only all records are added successfully, but because we do not raise ``409 Conflict`` for
  duplicate song , we can retry using the same payload, and new (preivously unadded) songs will be added to the database.
 In the response, ID for the song which exists already are provided in ``existing_song_ids`` field. 
-# TODO: 
-### [POST] /api/v1/songs/uploadfile
+
+#### [POST] /api/v1/songs/uploadfile
 This endpoint takes a file where each line contains a valid json item containing song date. This file is similar
  to the example file ``songs.json`` was provided with this assignment.
 ```curl
@@ -816,7 +814,7 @@ curl --location --request POST 'http://localhost:3500/api/v1/songs/uploadfile' \
 ```
 You can see that no new songs were added to database because the file contained same songs (as json) which were added
  in previous call to ``[POST] /api/v1/songs/<uploads>`` API call. 
-### [GET] /api/status
+#### [GET] /api/status
 This endpoint can be used for monitoring purposes. For every request, it creates, reads, and deletes a new song in
  database to ensure that database connectivity is up, and service is up and running in expected manner.
 
