@@ -1,0 +1,12 @@
+DbName: "development_db"
+DbHost: "127.0.0.1"
+DbPort: 27017  # If this is changed, please modify DB_PORT in Makefile
+ItemsPerPage: 20   # Item count for each page
+DbUsername: "<username>"
+DbPassword: "<password>"
+Stage: "dev"
+ServerPort: 3500
+EndpointBaseUrl: "http://localhost:3500"  # Use the same ServerPort number as above
+MailUsername: str = ''
+MailPassword: str = ''
+Debug: true
