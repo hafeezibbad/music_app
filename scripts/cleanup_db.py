@@ -10,7 +10,7 @@ sys.path.append(os.environ['PROJECT_ROOT_DIR'])
 # pylint: disable=wrong-import-position
 from src.database.db import initialize_db  # noqa: E402
 from src.database.models import SongRecord  # noqa: E402
-from src.lib.configuration.app_configuration import AppConfiguration
+from src.lib.configuration.app_configuration import AppConfiguration  # noqa: E402
 from src.lib.configuration.utils import load_configuration_from_yaml_file  # noqa: E402
 
 
